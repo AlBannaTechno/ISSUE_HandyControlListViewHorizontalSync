@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        MaxWidth="350"
+        WindowStartupLocation="CenterScreen"
+        Title="Listview H-Scroll Sync Issue" Height="350" Width="525">
+    <TabControl>
+        <TabItem Header="Issue">
+            <ListView
+                x:Name="FirstItemsCollection"
+                BorderThickness="0"
+                SelectionMode="Single">
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="Firstname" DisplayMemberBinding="{Binding Firstname}"/>
+                        <GridViewColumn Header="Lastname" DisplayMemberBinding="{Binding Lastname}"/>
+                        <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"/>
+                        <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
+        <TabItem Header="Workaround">
+            <ListView
+                x:Name="SecondItemsCollection"
+                BorderThickness="0"
+                SelectionMode="Single" >
+                <ListView.Style>
+                    <Style TargetType="ListView">
+                        <!-- <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/> -->
+                    </Style>
+                </ListView.Style>
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="Firstname" DisplayMemberBinding="{Binding Firstname}"/>
+                        <GridViewColumn Header="Lastname" DisplayMemberBinding="{Binding Lastname}"/>
+                        <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"/>
+                        <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
+    </TabControl>
 </Window>
